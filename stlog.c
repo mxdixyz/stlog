@@ -94,8 +94,8 @@ getDate(void) {
 	int map[]={0,3,2,5,0,3,5,1,4,6,2,4};
 	time_t t=time(NULL);
 	struct tm tm=*localtime(&t);
-	int m=tm.tm_mon+1,y=tm.tm_year+1900-m<3;
+	int m=tm.tm_mon+1,y=tm.tm_year+1900-(m<3);
 	int wd=(y+y/4-y/100+y/400+map[m-1]+tm.tm_mday)%7;
-	sprintf(date,"%i/%i/%i %i:%i:%i - %s",tm.tm_mon+1,tm.tm_mday,tm.tm_year+1900,tm.tm_hour,tm.tm_min,tm.tm_sec,weekdays[wd-2]);
+	sprintf(date,"%i/%i/%i %i:%i:%i - %s",tm.tm_mon+1,tm.tm_mday,tm.tm_year+1900,tm.tm_hour,tm.tm_min,tm.tm_sec,weekdays[wd-1]);
 	return date;
 }
