@@ -39,7 +39,7 @@ main(void) {
 			file=fopen(logFile,"a");
 			printf("\nEnter message: ");
 			scanf(" %[^\n]1023s",input);
-			sprintf(data,"\nDate: %s\n⎈ ",getDate());
+			sprintf(data,"\n%s - ",getDate());
 			strcat(data,input);
 			fprintf(file,"%s\n",data);
 			fclose(file);
@@ -47,7 +47,7 @@ main(void) {
 		} else if(!strcmp(input,"edit")) {
 			system(editCMD);
 			printf("\n");
-		}
+		} else if(eof!=EOF) printf("Invalid Input\n\n");
 		strcpy(input,"");
 	}
 	printf("\n");
@@ -96,6 +96,6 @@ getDate(void) {
 	struct tm tm=*localtime(&t);
 	int m=tm.tm_mon+1,y=tm.tm_year+1900-(m<3);
 	int wd=(y+y/4-y/100+y/400+map[m-1]+tm.tm_mday)%7;
-	sprintf(date,"%i/%i/%i %i:%i:%i - %s",tm.tm_mon+1,tm.tm_mday,tm.tm_year+1900,tm.tm_hour,tm.tm_min,tm.tm_sec,weekdays[wd-1]);
+	sprintf(date,"\033[4m""%i/%i/%i (%s) @ %i:%i""\033[0m",tm.tm_mon+1,tm.tm_mday,tm.tm_year+1900,weekdays[wd-1],tm.tm_hour,tm.tm_min);
 	return date;
 }
