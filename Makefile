@@ -1,10 +1,15 @@
+# See LICENSE file for copyright and license details.
 CC = gcc
-PREFIX = /usr
+PREFIX = /usr/local
 
 
-install:
-	$(CC) -o stlog stlog.c
-	cp -f stlog $(PREFIX)/bin/
+all:
+	$(CC) -g -o stlog stlog.c
+
+install: all
+	mkdir -p "$(PREFIX)/bin"
+	cp -f stlog "$(PREFIX)/bin"
+	chmod 755 "$(PREFIX)/bin/stlog"
 
 uninstall:
-	rm -f stlog $(PREFIX)/bin/stlog $(MANPREFIX)/man1/stlog.1
+	rm -f "$(PREFIX)/bin/stlog"

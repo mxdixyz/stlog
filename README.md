@@ -1,6 +1,6 @@
 stlog - simple terminal logging application
 ===========================================
-a simple command-line logging application written in C
+stlog is a simple command-line logging application for *nix operating systems.
 
 Installation
 ------------
