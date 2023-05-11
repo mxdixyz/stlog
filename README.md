@@ -1,3 +1,6 @@
+Project archived, use [stagenda](https://github.com/mxdixyz/stagenda) instead
+=============================================================================
+
 stlog - simple terminal logging application
 ===========================================
 stlog is a simple command-line logging application for *nix operating systems.
